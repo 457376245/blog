@@ -21,7 +21,7 @@ public class LogAspect {
 
     //这个注解表示一个切面,execution()表示拦截哪些
     //拦截controller下所有类和所有方法
-    @Pointcut("execution(* com.gao.controller.*.*(..))")
+    @Pointcut("execution(* cn.jh.controller.*.*(..))")
     public void log() {
 
     }

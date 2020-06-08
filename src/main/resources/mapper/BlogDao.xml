@@ -23,6 +23,7 @@
             <result property="name" column="name"/>
         </association>
     </resultMap>
+    <!-- -->
     <select id="getAllBlogQuery" resultMap="blog">
         select b.id,b.title,b.update_time,b.recommend,b.type_id,t.id,t.name from blog.t_blog b left outer join
         blog.t_type t on b.type_id = t.id order by b.update_time desc
@@ -97,11 +98,11 @@
         <result property="nickname" column="nickname"/>
         <result property="avatar" column="avatar"/>
     </resultMap>
-
-    <select id="getFirstPageBlog" resultMap="firstPageBlog">
-        select b.id,b.title,b.first_picture, b.views,b.update_time,b.description,
+<!--b.id,b.title,b.first_picture, b.views,b.update_time,b.description,
         t.name ,
-        u.nickname, u.avatar
+        u.nickname, u.avatar-->
+    <select id="getFirstPageBlog" resultMap="firstPageBlog">
+        select *
         from blog.t_blog b, blog.t_type t,blog.t_user u
         where b.type_id = t.id and  u.id = b.user_id order by b.update_time desc
     </select>
@@ -118,7 +119,7 @@
         u.nickname, u.avatar
         from blog.t_blog b, blog.t_type t,blog.t_user u
         where b.type_id = t.id and  u.id = b.user_id and (b.title like #{pattern} or b.content like  #{pattern})
-        order by b.update_time desc
+
     </select>
 
     <resultMap id="detailedBlog" type="cn.jh.dto.DetailedBlog">

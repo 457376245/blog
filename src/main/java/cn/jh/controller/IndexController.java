@@ -15,9 +15,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,10 +39,9 @@ public class IndexController {
     public String index(Model model, @RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum) {
         PageHelper.startPage(pageNum, 6);
         List<FirstPageBlog> allFirstPageBlog = blogService.getAllFirstPageBlog();
-        /*System.out.println("num:"+allFirstPageBlog.size());
-        for (FirstPageBlog firstPageBlog : allFirstPageBlog) {
-            System.out.println(firstPageBlog);
-        }*/
+        for(FirstPageBlog firstPageBlog:allFirstPageBlog){
+            System.out.println("allFirstPageBlog:"+allFirstPageBlog);
+        }
         List<Type> allType = typeService.getAllType();
         /*System.out.println("num:" + allType.size());
         for (Type type : allType) {
@@ -83,5 +80,15 @@ public class IndexController {
         model.addAttribute("comments", comments);
         model.addAttribute("blog", detailedBlog);
         return "blog";
+    }
+    @RequestMapping("/test")
+    @ResponseBody
+    public String test(){
+        List<FirstPageBlog> allFirstPageBlog = blogService.getAllFirstPageBlog();
+        for(FirstPageBlog firstPageBlog:allFirstPageBlog){
+            System.out.println("allFirstPageBlog:"+allFirstPageBlog);
+        }
+        return "log";
+
     }
 }
