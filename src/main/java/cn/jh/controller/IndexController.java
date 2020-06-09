@@ -39,9 +39,6 @@ public class IndexController {
     public String index(Model model, @RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum) {
         PageHelper.startPage(pageNum, 6);
         List<FirstPageBlog> allFirstPageBlog = blogService.getAllFirstPageBlog();
-        for(FirstPageBlog firstPageBlog:allFirstPageBlog){
-            System.out.println("allFirstPageBlog:"+allFirstPageBlog);
-        }
         List<Type> allType = typeService.getAllType();
         /*System.out.println("num:" + allType.size());
         for (Type type : allType) {

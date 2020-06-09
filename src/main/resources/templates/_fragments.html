@@ -53,18 +53,16 @@
                     </div>
                 </div>
             </div>
-            <div class="three wide column">
+            <div class="three wide column" >
                 <h4 class="ui inverted header m-text-thin m-text-spaced " >最新博客</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item m-text-thin">用户故事（User Story）</a>
-                    <a href="#" class="item m-text-thin">用户故事（User Story）</a>
-                    <a href="#" class="item m-text-thin">用户故事（User Story）</a>
+                <div class="ui inverted link list" th:each="blog:${pageInfo.list}" th:if="${pageInfo.list.indexOf(blog)} le 2">
+                    <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item m-text-thin" th:text="${blog.title}">用户故事（User Story）</a>
                 </div>
             </div>
             <div class="three wide column">
                 <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我</h4>
                 <div class="ui inverted link list">
-                    <a href="#" class="item m-text-thin">QQ：1437810640</a>
+                    <a href="#" class="item m-text-thin">QQ：457376245</a>
                 </div>
             </div>
             <div class="seven wide column">
